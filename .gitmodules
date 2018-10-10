@@ -1,0 +1,9 @@
+[submodule "external/arbor"]
+	path = external/arbor
+	url = https://github.com/arbor-sim/arbor
+[submodule "external/cppzmq"]
+	path = external/cppzmq
+	url = https://github.com/zeromq/cppzmq
+[submodule "external/conduit"]
+	path = external/conduit
+	url = https://github.com/LLNL/conduit
