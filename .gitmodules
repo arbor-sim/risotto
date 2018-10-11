@@ -13,3 +13,6 @@
 [submodule "external/contra"]
 	path = external/contra
 	url = https://devhub.vr.rwth-aachen.de/VR-Group/contra
+[submodule "external/nesci"]
+	path = external/nesci
+	url = https://github.com/arbor-sim/nesci

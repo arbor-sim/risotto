@@ -26,7 +26,6 @@ add_cmake_subproject(
 # -------------------
 
 find_package(cppzmq QUIET)
-message(STATUS "DEBUG cppzmq_FOUND: ${cppzmq_FOUND}")
 add_cmake_subproject(
     cppzmq
     UNLESS cppzmq_FOUND
@@ -42,7 +41,7 @@ add_cmake_subproject(
 #
 # Note:
 #
-# * The relevant CMakeLists.txt actually in conduit/src rather than
+# * The relevant CMakeLists.txt is actually in conduit/src rather than
 #   in the top level directory.
 #
 # * The generated export cmake files are installed in a location where
@@ -111,7 +110,6 @@ add_custom_target(catch2-work-around
 find_package(contra QUIET)
 add_cmake_subproject(
     contra
-    TARGET contra
     UNLESS contra_FOUND
     GIT_SUBMODULE
     COMPILERS CXX
@@ -119,5 +117,20 @@ add_cmake_subproject(
     DEPENDS cppzmq conduit catch2 catch2-work-around
     CMAKE_ARGS
         -DWITH_TRANSPORT_ZEROMQ=ON
+)
+
+# Nesci
+# -----
+#
+# Currently using a fork (arbor-sim/nesci) to work-around various CMake/conan-related issues.
+
+find_package(nesci QUIET)
+add_cmake_subproject(
+    nesci
+    UNLESS nesci_FOUND
+    GIT_SUBMODULE
+    COMPILERS CXX
+    INSTALL_DIR "${install_dir}"
+    DEPENDS conduit catch2
 )
 
