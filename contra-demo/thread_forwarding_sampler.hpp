@@ -21,17 +21,6 @@
 #include <contra/zmq/zeromq_transport.hpp>
 #include <nesci/producer/arbor_multimeter.hpp>
 
-using arb::cell_gid_type;
-using arb::cell_lid_type;
-using arb::cell_size_type;
-using arb::cell_member_type;
-using arb::cell_kind;
-using arb::time_type;
-using arb::cell_probe_address;
-using arb::mc_cell;
-using arb::section_kind;
-
-
 using traces_type = std::vector<std::tuple< arb::cell_gid_type, arb::cell_lid_type,
     std::vector<std::tuple<arb::time_type, double>> >>;
 
@@ -46,7 +35,7 @@ public:
         std::condition_variable& wake_up) : traces_(traces) , mutex_(mutex), wake_up_(wake_up)
     {}
 
-    void operator()(cell_member_type probe_id, arb::probe_tag tag, std::size_t n,
+    void operator()(arb::cell_member_type probe_id, arb::probe_tag tag, std::size_t n,
         const arb::sample_record* recs) {
 
         // Local data structure for storing the trace. Filled outside of the mutex

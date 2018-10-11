@@ -106,6 +106,7 @@ add_custom_target(catch2-work-around
 # ------
 #
 # Build with support for zeromq, but omit shmem support.
+# Need to supply our own contra-config.cmake.
 
 find_package(contra QUIET)
 add_cmake_subproject(
@@ -116,8 +117,9 @@ add_cmake_subproject(
     INSTALL_DIR "${install_dir}"
     DEPENDS cppzmq conduit catch2 catch2-work-around
     CMAKE_ARGS
-        -DWITH_TRANSPORT_ZEROMQ=ON
-)
+        -DWITH_ZEROMQ=ON
+    POST_INSTALL
+        ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/contra-config.cmake" "${install_dir}/lib/contra/cmake/")
 
 # Nesci
 # -----
