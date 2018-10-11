@@ -83,6 +83,7 @@ function(add_cmake_subproject sub)
         ExternalProject_Add(${_target}
             SOURCE_DIR ${_source_dir}
             INSTALL_DIR "${_install_dir}"
+            BUILD_ALWAYS ON
             STEP_TARGETS build
             DEPENDS ${arg_DEPENDS}
             LIST_SEPARATOR :
@@ -109,3 +110,6 @@ add_subdirectory(external)
 
 add_cmake_subproject(placeholder COMPILERS CXX DEPENDS arbor)
 
+# Contra demo
+
+add_cmake_subproject(contra-demo COMPILERS CXX DEPENDS arbor contra nesci)
