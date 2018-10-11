@@ -7,3 +7,9 @@
 [submodule "external/conduit"]
 	path = external/conduit
 	url = https://github.com/LLNL/conduit
+[submodule "external/catch2"]
+	path = external/catch2
+	url = https://github.com/catchorg/Catch2
+[submodule "external/contra"]
+	path = external/contra
+	url = https://devhub.vr.rwth-aachen.de/VR-Group/contra
