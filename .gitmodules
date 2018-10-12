@@ -12,7 +12,7 @@
 	url = https://github.com/catchorg/Catch2
 [submodule "external/contra"]
 	path = external/contra
-	url = https://devhub.vr.rwth-aachen.de/VR-Group/contra
+	url = https://github.com/arbor-sim/contra
 [submodule "external/nesci"]
 	path = external/nesci
 	url = https://github.com/arbor-sim/nesci

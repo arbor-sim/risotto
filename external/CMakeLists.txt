@@ -84,29 +84,12 @@ add_cmake_subproject(
         -DCATCH_INSTALL_HELPERS=OFF
 )
 
-# Catch2 include directory work-around
-# ------------------------------------
-#
-# Contra looks for catch2 headers under 'catch/' instead of
-# 'catch2/'. This is a fragile work-around that copies the
-# headers to ${install_dir}/include/catch, which should be
-# found by contra if any dependency was installed via subproject.
-
-if(Catch2_FOUND)
-    get_target_property(catch2_include_dir Catch2::Catch2 INTERFACE_INCLUDE_DIRECTORIES)
-else()
-    set(catch2_include_dir "${install_dir}/include")
-endif()
-add_custom_target(catch2-work-around
-    DEPENDS catch2
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${catch2_include_dir}/catch2" "${install_dir}/include/catch")
-
 
 # Contra
 # ------
 #
+# Currently using a fork (arbor-sim/contra) to work-around various CMake/conan-related issues.
 # Build with support for zeromq, but omit shmem support.
-# Need to supply our own contra-config.cmake.
 
 find_package(contra QUIET)
 add_cmake_subproject(
@@ -115,11 +98,9 @@ add_cmake_subproject(
     GIT_SUBMODULE
     COMPILERS CXX
     INSTALL_DIR "${install_dir}"
-    DEPENDS cppzmq conduit catch2 catch2-work-around
+    DEPENDS cppzmq conduit catch2
     CMAKE_ARGS
-        -DWITH_ZEROMQ=ON
-    POST_INSTALL
-        ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/contra-config.cmake" "${install_dir}/lib/contra/cmake/")
+        -DWITH_ZEROMQ=ON)
 
 # Nesci
 # -----
