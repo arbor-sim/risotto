@@ -10,9 +10,9 @@
 [submodule "external/catch2"]
 	path = external/catch2
 	url = https://github.com/catchorg/Catch2
-[submodule "external/contra"]
-	path = external/contra
-	url = https://github.com/arbor-sim/contra
 [submodule "external/nesci"]
 	path = external/nesci
-	url = https://github.com/arbor-sim/nesci
+	url = git@github.com:arbor-sim/nesci
+[submodule "external/contra"]
+	path = external/contra
+	url = git@github.com:arbor-sim/contra

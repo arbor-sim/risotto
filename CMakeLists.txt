@@ -47,7 +47,7 @@ function(add_cmake_subproject sub)
 
     if(arg_GIT_SUBMODULE AND (NOT EXISTS "${_abs_sub_path}/.git"))
         set(_available FALSE)
-        set(_reason "Missing git repository at ${_path}; require git submodule update?")
+        set(_reason "Missing git repository at ${_abs_sub_path}. require git submodule update?")
     endif()
 
     if(${arg_UNLESS})
