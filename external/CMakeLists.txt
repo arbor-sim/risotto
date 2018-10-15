@@ -18,7 +18,7 @@ add_cmake_subproject(
     INSTALL_DIR "${install_dir}"
     COMPILERS CXX
     CMAKE_ARGS
-        -DARB_WITH_MPI=ON
+        -DARB_WITH_MPI=OFF
         -DARB_VECTORIZE=${ARB_VECTORIZE}
         -DARB_ARCH=${ARB_ARCH})
 
